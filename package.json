@@ -1,0 +1,26 @@
+{
+  "name": "jenkins96",
+  "version": "1.0.0",
+  "description": "Implementation of the Jenkins96 hashing algorithm.",
+  "main": "jenkins96.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kruithne/node-jenkins96.git"
+  },
+  "keywords": [
+    "jenkins",
+    "jenkins96",
+    "hash",
+    "hashing",
+    "algorithm"
+  ],
+  "author": "Kruithne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kruithne/node-jenkins96/issues"
+  },
+  "homepage": "https://github.com/Kruithne/node-jenkins96#readme"
+}
