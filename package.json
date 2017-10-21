@@ -4,7 +4,7 @@
   "description": "Implementation of the Jenkins96 hashing algorithm.",
   "main": "jenkins96.js",
   "scripts": {
-    "test": "test.js"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/Kruithne/node-jenkins96/issues"
   },
-  "homepage": "https://github.com/Kruithne/node-jenkins96#readme"
+  "homepage": "https://github.com/Kruithne/node-jenkins96#readme",
+  "dependencies": {
+    "int32": "^2.4.1",
+    "long": "^3.2.0",
+    "node-int64": "^0.4.0"
+  }
 }
