@@ -25,10 +25,6 @@ const _restrict = function(val) {
 	return val;
 };
 
-const _rotate = (a, b) => {
-	return _restrict(_restrict(int32.shiftLeft(a, b)) | _restrict(int32.shiftRightUnsigned(a, 32 - b)));
-};
-
 module.exports = function(input) {
 	let bytes = [];
 	if (typeof input === 'string') {
@@ -83,12 +79,12 @@ module.exports = function(input) {
 		b = _restrict(int32.add(b, _extract(bytes, j / 4 + 1)));
 		c = _restrict(int32.add(c, _extract(bytes, j / 4 + 2)));
 
-		a -= c; a ^= _rotate(c, 4); c += b;
-		b -= a; b ^= _rotate(a, 6); a += c;
-		c -= b; c ^= _rotate(b, 8); b += a;
-		a -= c; a ^= _rotate(c, 16); c += b;
-		b -= a; b ^= _rotate(a, 19); a += c;
-		c -= b; c ^= _rotate(b, 4); b += a;
+		a -= c; a ^= int32.rotateLeft(c, 4); c += b;
+		b -= a; b ^= int32.rotateLeft(a, 6); a += c;
+		c -= b; c ^= int32.rotateLeft(b, 8); b += a;
+		a -= c; a ^= int32.rotateLeft(c, 16); c += b;
+		b -= a; b ^= int32.rotateLeft(a, 19); a += c;
+		c -= b; c ^= int32.rotateLeft(b, 4); b += a;
 
 		a = _restrict(a);
 		b = _restrict(b);
@@ -100,13 +96,13 @@ module.exports = function(input) {
 	b = _restrict(int32.add(b, _extract(bytes, y / 4 + 1)));
 	c = _restrict(int32.add(c, _extract(bytes, y / 4 + 2)));
 
-	c ^= b;	c = _restrict(c - _rotate(b, 14));
-	a ^= c; a = _restrict(a - _rotate(c, 11));
-	b ^= a; b = _restrict(b - _rotate(a, 25));
-	c ^= b; c = _restrict(c - _rotate(b, 16));
-	a ^= c; a = _restrict(a - _rotate(c, 4));
-	b ^= a; b = _restrict(b - _rotate(a, 14));
-	c ^= b; c = _restrict(c - _rotate(b, 24));
+	c ^= b;	c = _restrict(c - int32.rotateLeft(b, 14));
+	a ^= c; a = _restrict(a - int32.rotateLeft(c, 11));
+	b ^= a; b = _restrict(b - int32.rotateLeft(a, 25));
+	c ^= b; c = _restrict(c - int32.rotateLeft(b, 16));
+	a ^= c; a = _restrict(a - int32.rotateLeft(c, 4));
+	b ^= a; b = _restrict(b - int32.rotateLeft(a, 14));
+	c ^= b; c = _restrict(c - int32.rotateLeft(b, 24));
 
 	let hash = new Long(c, 0, true);
 	hash = hash.shiftLeft(32);
