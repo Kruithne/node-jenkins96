@@ -25,7 +25,7 @@ const _restrict = function(val) {
 	return val;
 };
 
-module.exports = function(input) {
+module.exports = function(input, radix) {
 	let bytes = [];
 	if (typeof input === 'string') {
 		// Marshal string to byte-array.
@@ -107,5 +107,5 @@ module.exports = function(input) {
 	let hash = new Long(c, 0, true);
 	hash = hash.shiftLeft(32);
 	hash = hash.or(b);
-	return hash.toString();
+	return hash.toString(radix || 10);
 };
