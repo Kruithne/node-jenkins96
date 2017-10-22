@@ -25,7 +25,6 @@
   "homepage": "https://github.com/Kruithne/node-jenkins96#readme",
   "dependencies": {
     "int32": "^2.4.1",
-    "long": "^3.2.0",
-    "node-int64": "^0.4.0"
+    "long": "^3.2.0"
   }
 }
